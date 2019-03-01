@@ -1,5 +1,6 @@
 <template>
-  <swiper v-if="showSwiper">
+  <div v-if="showSwiper">
+    <swiper :options="swiperOptions">
       <!-- slides -->
       <swiper-slide v-for="(list, index) in pages" :key="index">
         <div class="icons">
@@ -12,10 +13,18 @@
         </div>
       </swiper-slide>
     </swiper>
+  </div>
 </template>
 <script>
 export default {
   props: ['list'],
+  data () {
+    return {
+      swiperOptions: {
+        loop: true
+      }
+    }
+  },
   computed: {
     showSwiper () {
       return this.list.length

@@ -3,12 +3,16 @@
     <home-header></home-header>
     <swiper :list="swiperList"></swiper>
     <home-icons :list="iconList"></home-icons>
+    <recommend :list="recommendList"></recommend>
+    <weekend :list="weekendList"></weekend>
   </div>
 </template>
 <script>
 import HomeHeader from './components/header'
 import Swiper from './components/swiper'
 import HomeIcons from './components/homeIcons'
+import Recommend from './components/recommend'
+import Weekend from './components/weekend'
 import { getIndex } from '@/api/index'
 export default {
   name: 'home',
@@ -31,7 +35,9 @@ export default {
   components: {
     HomeHeader,
     Swiper,
-    HomeIcons
+    HomeIcons,
+    Recommend,
+    Weekend
   }
 }
 </script>
