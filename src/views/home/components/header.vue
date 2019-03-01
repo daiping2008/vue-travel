@@ -7,46 +7,51 @@
       <i class="iconfont">&#xe819;</i>
       输入城市/景点/游玩主题
     </div>
-    <div class="header-right">
-      城市<i class="iconfont">&#xe64a;</i>
-    </div>
+    <router-link to="/city">
+      <div class="header-right">
+        {{city}}<i class="iconfont">&#xe64a;</i>
+      </div>
+    </router-link>
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 export default {
-
+  computed: {
+    ...mapState(['city'])
+  }
 }
 </script>
 <style lang="stylus" scoped>
   @import '~@/assets/styles/varibles.styl'
   .header
-    height .86rem
-    line-height .86rem
-    display flex
-    background-color #00bcd4
-    color #ffffff
+    display: flex
+    line-height: $headerHeight
+    background: $bgColor
+    color: #fff
     .header-left
-      flex 0 0 .64rem
-      width .64rem
-      text-align center
+      width: .64rem
+      float: left
       .back-icon
-        font-size .4rem
-        margin-left .1rem
+        text-align: center
+        font-size: .4rem
     .header-input
-      flex 1
-      background-color #fff
-      height .64rem
-      line-height .64rem
-      margin-top .15rem
-      margin-left .2rem
-      padding-left .2rem
-      border-radius  .1rem
-      color #ccc
+      flex: 1
+      height: .64rem
+      line-height: .64rem
+      margin-top: .12rem
+      margin-left: .2rem
+      padding-left: .2rem
+      background: #fff
+      border-radius: .1rem
+      color: #ccc
     .header-right
-      flex 0 0 1.04rem
-      width 1.04rem
-      text-align center
-      .iconfont
-        margin-left .04rem
-        font-size .2rem
+      min-width: 1.04rem
+      padding: 0 .1rem
+      float: right
+      text-align: center
+      color: #fff
+      .arrow-icon
+        margin-left: -.04rem
+        font-size: .24rem
 </style>
