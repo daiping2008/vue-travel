@@ -24,6 +24,7 @@ import DetailBanner from './components/banner'
 import DetailHeader from './components/header'
 import { getDetail } from '@/api/index'
 export default {
+  name: 'detail',
   data () {
     return {
       bannerImg: '',
