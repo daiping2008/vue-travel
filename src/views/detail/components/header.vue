@@ -3,7 +3,7 @@
     <router-link
       tag="div"
       class="header-abs"
-      to="/">
+      to="/">{{top}}
       <div class="iconfont header-abs-back">&#xe6bc;</div>
     </router-link>
     <div
@@ -23,6 +23,7 @@
 export default {
   data () {
     return {
+      top: 0,
       showAbs: true,
       opacityStyle: {
         opacity: 1
@@ -31,7 +32,8 @@ export default {
   },
   methods: {
     handleScroll () {
-      const top = document.documentElement.scrollTop
+      const top = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+      this.top = top
       if (top > 60) {
         let opacity = top / 140
         opacity = opacity > 1 ? 1 : opacity
@@ -43,10 +45,10 @@ export default {
     }
   },
   mounted () {
-    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('touchmove', this.handleScroll)
   },
   unmounted () {
-    window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('touchmove', this.handleScroll)
   }
 }
 </script>

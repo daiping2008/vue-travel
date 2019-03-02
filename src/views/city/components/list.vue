@@ -1,11 +1,11 @@
 <template>
   <div class="list" ref="wrapper">
     <div>
-      <div class="area">
+      <div class="area" v-show="city">
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">北京</div>
+            <div class="button">{{city}}</div>
           </div>
         </div>
       </div>
@@ -31,10 +31,13 @@
 
 <script>
 import BScroll from 'better-scroll'
+import { mapState } from 'vuex'
 export default {
   props: ['hotCities', 'cities', 'letter'],
   mounted () {
-    this.scroll = new BScroll(this.$refs.wrapper)
+    this.scroll = new BScroll(this.$refs.wrapper, {
+      click: true
+    })
   },
   watch: {
     letter () {
@@ -43,6 +46,9 @@ export default {
         this.scroll.scrollToElement(el, 200)
       }
     }
+  },
+  computed: {
+    ...mapState(['city'])
   },
   methods: {
     handleCityClick (cityName) {
