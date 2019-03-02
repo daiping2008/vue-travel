@@ -3,7 +3,7 @@
     <div class="title">热销推荐</div>
     <ul>
       <router-link
-        to="'/detail/' + item.id"
+        :to="'/detail/'+item.id"
         tag="li"
         class="item border-bottom"
         v-for="item in list"
